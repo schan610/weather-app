@@ -1,0 +1,47 @@
+@use "../abstracts" as *;
+
+.results {
+  grid-column: center-start / center-end;
+  margin-top: 2.4rem;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  max-height: min-content;
+  gap: 4.8rem;
+}
+
+.result {
+  border: none;
+  cursor: pointer;
+  background-color: $color-white;
+  box-shadow: $box-shadow-2;
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  padding: 1.6rem 1.2rem;
+  transition: all 0.3s;
+
+  &__icon {
+    font-size: 3.8rem;
+    color: $color-med-grey;
+  }
+  &__info {
+    color: $color-dark-grey;
+
+    &__country-text {
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      color: $color-med-grey;
+      text-align: left;
+      margin-top: 0.8rem;
+    }
+  }
+  &:hover {
+    transform: translateY(-4px);
+  }
+  &:active {
+    box-shadow: $box-shadow-animate;
+    transform: translateY(1px);
+  }
+}

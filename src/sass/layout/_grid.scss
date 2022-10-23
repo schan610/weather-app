@@ -1,0 +1,15 @@
+@use "../abstracts" as *;
+
+.container {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr) [center-start] repeat(
+      5,
+      minmax(max-content, 16rem)
+    )
+    [center-end] minmax(6rem, 1fr) [full-end];
+  row-gap: 3.2rem;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20rem;
+}

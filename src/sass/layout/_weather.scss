@@ -1,0 +1,74 @@
+@use "../abstracts" as *;
+
+.weather {
+  grid-column: 3 / span 3;
+  margin-top: 2.4rem;
+  background-color: $color-white;
+  box-shadow: $box-shadow-2;
+  padding: 2.4rem;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  row-gap: 2.4rem;
+
+  &__location {
+    grid-column: 1 / -1;
+
+    &__time {
+      font-size: 1.4rem;
+      letter-spacing: 0.5;
+    }
+  }
+}
+
+.overview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  font-size: 6.4rem;
+  grid-column: 1 / span 3;
+  border-right: 1px solid $color-light-grey;
+
+  &__description {
+    .wi {
+      color: $color-med-grey;
+      font-size: 6.4rem;
+    }
+  }
+
+  &__temp {
+    display: inline-block;
+    font-weight: 300;
+  }
+
+  .min-max {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+}
+
+.detail {
+  list-style: none;
+  grid-column: 4 / -1;
+  align-self: baseline;
+  font-size: 1.4rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, 0.5fr));
+  column-gap: 2rem;
+  row-gap: 0.8rem;
+  padding-top: 2rem;
+  padding-left: 2rem;
+
+  &__item {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 1.6rem;
+  }
+}

@@ -1,0 +1,34 @@
+@use "../abstracts" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $font-family;
+  color: $color-med-grey;
+  line-height: 1.6;
+  min-height: 100vh;
+  background-image: linear-gradient(to right, rgba(#aaa, 0.4), rgba(#aaa, 0.4)),
+    url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// UTIL
+
+.hidden {
+  display: none !important;
+}

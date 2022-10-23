@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/schan610/weather-app#readme",
   "dependencies": {
-    "@parcel/transformer-sass": "^2.7.0"
+    "@parcel/transformer-sass": "^2.7.0",
+    "feather-icons": "^4.29.0",
+    "weather-icons-sass": "^2.0.10"
   }
 }
