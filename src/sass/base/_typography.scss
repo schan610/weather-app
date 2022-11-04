@@ -14,10 +14,26 @@
   font-size: 2rem;
 }
 
+.error {
+  background-color: rgba($color: $color-dark-grey, $alpha: 0.5);
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: $color-white;
+
+  &__message {
+    color: $color-white;
+    font-size: 2rem;
+    text-shadow: $box-shadow-2;
+    letter-spacing: 0.5;
+  }
+}
+
 .paragraph {
   font-size: 1.4rem;
-  text-align: center;
-  margin-top: -1rem;
+  display: flex;
+  justify-content: center;
   color: $color-light-grey;
 }
 .icons {

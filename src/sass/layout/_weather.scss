@@ -1,7 +1,8 @@
 @use "../abstracts" as *;
-
-.weather {
+.active {
   grid-column: 3 / span 3;
+}
+.weather {
   margin-top: 2.4rem;
   background-color: $color-white;
   box-shadow: $box-shadow-2;
@@ -14,7 +15,11 @@
 
   &__location {
     grid-column: 1 / -1;
-
+    &__update {
+      font-size: 1.4rem;
+      letter-spacing: 0.5;
+      text-align: right;
+    }
     &__time {
       font-size: 1.4rem;
       letter-spacing: 0.5;
@@ -26,21 +31,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 4rem;
   font-size: 6.4rem;
   grid-column: 1 / span 3;
   border-right: 1px solid $color-light-grey;
+  padding-bottom: 3rem;
+  height: 100%;
 
   &__description {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     .wi {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1.2;
       color: $color-med-grey;
-      font-size: 6.4rem;
     }
   }
 
   &__temp {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
     font-weight: 300;
+  }
+
+  &__degrees {
+    height: 25%;
+    font-size: 6.4rem;
   }
 
   .min-max {
@@ -54,6 +76,7 @@
   grid-column: 4 / -1;
   align-self: baseline;
   font-size: 1.4rem;
+  letter-spacing: 0.5;
 
   display: grid;
   grid-template-columns: repeat(2, minmax(min-content, 0.5fr));

@@ -13,8 +13,9 @@ const getSearchResults = async function (data) {
   state.search.results = await Promise.all(
     data.map(async (result) => {
       const detail = await AJAX(
-        `${API_WEATHER_URL}lat=${result.lat}&lon=${result.lon}&appid=${API_KEY}`
+        `${API_WEATHER_URL}lat=${result.lat}&lon=${result.lon}&appid=${API_KEY}&units=imperial`
       );
+
       const [weather] = detail.weather;
       return {
         name: result.name,
@@ -24,15 +25,55 @@ const getSearchResults = async function (data) {
         lon: result.lon,
         main: detail.main,
         weather,
+        windSpeed: detail.wind.speed.toFixed(1),
+        lastUpdated: getLocalTime(
+          detail.timezone,
+          new Date(detail.dt * 1000),
+          detail.dt
+        ),
+        curLocalTime: getLocalTime(detail.timezone),
+        sunrise: getLocalTime(
+          detail.timezone,
+          new Date(detail.sys.sunrise * 1000),
+          detail.dt
+        ),
+        sunset: getLocalTime(
+          detail.timezone,
+          new Date(detail.sys.sunset * 1000),
+          detail.dt
+        ),
       };
     })
   );
 };
 
 export const loadSearchResults = async function (city) {
-  state.search.query = city;
-  const data = await AJAX(
-    `${API_GEOCODE_URL}q=${city}&limit=5&appid=${API_KEY}`
-  );
-  await getSearchResults(data);
+  try {
+    state.search.query = city;
+    const data = await AJAX(
+      `${API_GEOCODE_URL}q=${city}&limit=5&appid=${API_KEY}`
+    );
+
+    await getSearchResults(data);
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const getActiveCity = function (id) {
+  return state.search.results[id];
+};
+
+const getLocalTime = function (timezone, dt = new Date()) {
+  // convert date to UTC format in milliseconds for better accuracy
+  const utc = dt.getTime() + dt.getTimezoneOffset() * 60000;
+  // get local time with timezone offset
+  const localTime = new Date(utc + 1000 * timezone);
+  return {
+    hours: localTime.getHours(),
+    time: `${localTime.getHours()}:` + `0${localTime.getMinutes()}`.slice(-2),
+    date: localTime.getDate(),
+    month: localTime.toLocaleString("default", { month: "short" }),
+    year: localTime.getFullYear(),
+  };
 };
