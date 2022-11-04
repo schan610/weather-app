@@ -4,9 +4,9 @@ import searchView from "./views/searchView";
 import resultsView from "./views/resultsView";
 import weatherView from "./views/weatherView.js";
 
-
 const controlSearch = async function () {
   try {
+    resultsView.renderSpinner();
     const query = searchView.getQuery();
     await model.loadSearchResults(query);
     resultsView.render(model.state.search.results);

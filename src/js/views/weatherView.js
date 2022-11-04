@@ -2,7 +2,7 @@ class WeatherView {
   _parentEl = document.querySelector(".active");
   _data;
 
-  generateMarkup(data) {
+  _generateMarkup(data) {
     return ` <div class="weather">
     <div class="weather__location">
     <p class = "weather__location__update">Last updated: ${
@@ -64,7 +64,7 @@ class WeatherView {
   }
   render(data) {
     this._clear();
-    const markup = this.generateMarkup(data);
+    const markup = this._generateMarkup(data);
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 }

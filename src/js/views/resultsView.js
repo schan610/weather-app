@@ -3,7 +3,7 @@ import icons from "../../img/feather-sprite.svg";
 class ResultsView {
   _parentEl = document.querySelector(".results");
 
-  generateMarkup(data) {
+  _generateMarkup(data) {
     return data
       .map((result, index) => {
         return `<button class="result" id = "${index}">
@@ -21,7 +21,7 @@ class ResultsView {
 
   render(data) {
     this._clear();
-    const markup = this.generateMarkup(data);
+    const markup = this._generateMarkup(data);
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
@@ -49,6 +49,14 @@ class ResultsView {
       const id = btn.getAttribute("id");
       handler(id);
     });
+  }
+
+  renderSpinner() {
+    const markup = `<svg class="loader__icon">
+    <use href="${icons}#loader" />
+  </svg>`;
+
+    this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 }
 
