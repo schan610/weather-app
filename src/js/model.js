@@ -1,3 +1,5 @@
+// This module handles retrieving, organizing, and storing the data needed to display the search results and the selected user city.
+
 import { AJAX } from "./helpers";
 import { API_KEY, API_GEOCODE_URL, API_WEATHER_URL } from "./config";
 
@@ -10,6 +12,7 @@ export const state = {
 };
 
 const getSearchResults = async function (data) {
+  // Retrieve search results and update the state into an array of objects
   state.search.results = await Promise.all(
     data.map(async (result) => {
       const detail = await AJAX(
@@ -49,11 +52,11 @@ const getSearchResults = async function (data) {
 
 export const loadSearchResults = async function (city) {
   try {
+    // Retrieve user input
     state.search.query = city;
     const data = await AJAX(
       `${API_GEOCODE_URL}q=${city}&limit=5&appid=${API_KEY}`
     );
-
     await getSearchResults(data);
   } catch (err) {
     throw err;
@@ -61,6 +64,7 @@ export const loadSearchResults = async function (city) {
 };
 
 export const getActiveCity = function (id) {
+  // Return user selected city
   return state.search.results[id];
 };
 
