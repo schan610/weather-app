@@ -19,7 +19,7 @@ const controlSearch = async function () {
   }
 };
 
-controlResults = function (id) {
+const controlResults = function (id) {
   const curCity = model.getActiveCity(id);
   weatherView.render(curCity);
   console.log(curCity);
