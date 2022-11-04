@@ -17,7 +17,7 @@ class WeatherView {
     </div>
     <div class="overview">
       <div class="overview__description">
-        <i class="wi wi-owm-${data.weather.id}"></i>
+        <i class="wi wi-owm-${data.weather.id} overview__icon"></i>
         <p class="paragraph overview__description__summary">${
           data.weather.description
         }</p>

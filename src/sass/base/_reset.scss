@@ -14,6 +14,10 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
+  @media screen and (max-width: 52em) {
+    font-size: 58%;
+  }
 }
 
 body {
@@ -22,7 +26,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   background-image: linear-gradient(to right, rgba(#aaa, 0.4), rgba(#aaa, 0.4)),
-    url("../img/background.jpg");
+    url("../img/background.webp");
   background-repeat: no-repeat;
   background-size: cover;
 }

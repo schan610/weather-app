@@ -2,18 +2,20 @@
   "name": "weather-app",
   "version": "1.0.0",
   "description": "check weather of any city",
-  "main": "index.js",
-  "browserslist": "> 0.25%, not dead",
+  "default": "script.js",
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/schan610/weather-app.git"
   },
-  "author": "Sabrina Chan",
+  "author": "s.chan610",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
     "autoprefixer": "^10.4.12",
     "parcel": "^2.7.0",
     "postcss-cli": "^10.0.0"
@@ -23,8 +25,12 @@
   },
   "homepage": "https://github.com/schan610/weather-app#readme",
   "dependencies": {
-    "@parcel/transformer-sass": "^2.7.0",
+    "@parcel/transformer-js": "^2.7.0",
+    "@swc/helpers": "^0.4.12",
     "feather-icons": "^4.29.0",
     "weather-icons-sass": "^2.0.10"
+  },
+  "targets": {
+    "main": false
   }
 }
